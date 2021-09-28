@@ -8,7 +8,23 @@
     </div>
     <div class="school">
       <h6>学院</h6>
-      <input v-model="user.school" />
+      <input 
+        v-model="user.school" 
+        @focus="focus" 
+        @blur="hideAuto"
+      />
+      <div class="autoc" v-show="show" ref="school">
+        <div class="autoc-wrapper">
+          <div 
+            class="auto-item" 
+            v-for="name in colleges" 
+            :key="name"
+            @click="saveSchool(name)"
+          >
+            {{name}}
+          </div>
+        </div>
+      </div>
     </div>
     <div class="id">
       <h6>学号</h6>
@@ -32,7 +48,11 @@ export default {
         name:'张三',
         school:'',
         id: ''
-      }
+      },
+      colleges:[
+        '计算机学院（国家示范性软件学院）',
+      ],
+      show:false
     }
   },
   mounted: function(){
@@ -52,6 +72,27 @@ export default {
     },
     check(){
       this.$router.push('/')
+    },
+    saveSchool(school){
+      console.log(school)
+      this.user.school = school;
+    },
+    focus(){
+      this.$data.show = true;
+      // const offsetTop = this.$refs.school.offsetTop;
+      setTimeout(()=>{
+        // window.scrollTo({
+        //   top:offsetTop,
+        //   behavior:'smooth'
+        // })
+        this.$refs.school.scrollIntoView()
+      },500)
+      // console.log()
+    },
+    hideAuto(){
+      setTimeout(()=>{
+        this.$data.show = false
+      })
     }
   }
 }
@@ -103,5 +144,24 @@ input {
   font-size: 22px;
   width: 72px;
   background: #09e02d;
+}
+
+.autoc {
+  position: absolute;
+  width: 100vw;
+}
+
+.autoc-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  background: #fff;
+
+}
+
+.auto-item {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 12px;
 }
 </style>

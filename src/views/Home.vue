@@ -12,7 +12,7 @@
     </header> -->
     <div class="header-school">
       <img :src="require('../assets/组织.svg')"/>
-      当前部门: {{user.school}}
+      当前部门：{{user.school}}
       <div class="header-menu">
           <img :src="require('@/assets/下拉.svg')">
       </div>
@@ -26,14 +26,16 @@
     <div class="xueyuan">学院</div>
     <div class="jingguan">{{user.school}}</div>
     <div class="colorful">
-    <div class="color"></div>
+        <div class="color-img">
+            <img src="https://imgservice.bupt.edu.cn/image/1958/3916676.gif" />
+        </div>
     </div>
     <div class="zhuangtaima">状态码</div>
     <div class="erweima">
     <!-- 绿码 -->
     <img :src="require('../assets/绿码.jpg')" alt="" />
     </div>
-    <div class="zhuangtai">状态</div>
+    <div class="zhuangtai"></div>
     <div class="yunxvruxiao" @click="trans">{{direction}}</div>
     <div class="xuegonghao">学工号</div>
     <div class="xuehao">{{user.id}}</div>
@@ -219,6 +221,10 @@ header .right {
     text-indent: 1em;
     color: #888;
     text-align: left;
+    background: #f4f7fa;
+}
+.zhuangtai {
+    height: 10px;
 }
 
 .mingzi,
@@ -240,13 +246,13 @@ header .right {
 }
 
 .erweima {
-    height: 180px;
+    height: 176px;
 }
 
 .erweima img {
-    width: 42%;
-    margin-top: 90px;
-    transform: translateY(-50%);
+    width: 150px;
+    height: 150px;
+    margin-top: 13px;
 }
 
 .yunxvruxiao {
@@ -258,46 +264,21 @@ header .right {
 
 .colorful {
     position: relative;
-    height: 42.38px;
+    height: 58.3176px;
     margin-top: 12px;
     width: 100%;
     background-color: #fff;
 }
 
-.colorful .color {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: 25px;
-    width: 93%;
-    background-color: #19A33D;
-    animation: color 3s steps(1) 2s infinite normal;
+.color-img {
+    padding: 13px 15px;
 }
 
-@keyframes color {
-    14.28% {
-        background-color: #943C97;
-    }
-    28.57% {
-        background-color: #F96F1C;
-    }
-    42.85% {
-        background-color: #333BC2;
-    }
-    57.14% {
-        background-color: #E7181F;
-    }
-    71.42% {
-        background-color: #FDF100;
-    }
-    85.71% {
-        background-color: #0094E1;
-    }
-    100% {
-        background-color: #19A33D;
-    }
+.color-img  img {
+    width: 100%;
+    height: 100%;
 }
+
 .gengduo {
     text-align: left;
     position: fixed;
